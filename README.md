@@ -45,7 +45,7 @@ source("path/to/constants.R") # load api_key, api_key_staging
 
 # API-keys are loaded automatically from constants.R
 # no need to modify manually
-purephd::use_pure_credentials(
+puRephd::use_pure_credentials(
   # Your production API-key with read&write authorization for /research-outputs/
   prod_key = api_key, 
   # Your staging API-key with read&write authorization for /research-outputs/
@@ -75,7 +75,7 @@ PURE stores internal persons (e.g., students, supervisors) with unique identifie
 
 ```r
 # Internal persons
-internal_persons <- purephd::get_internal_persons(base_url = cfg$base_url, 
+internal_persons <- puRephd::get_internal_persons(base_url = cfg$base_url, 
                                                   headers = cfg$headers, 
                                                   download_new_and_save = FALSE, # set to false, if you've run it with TRUE before and the .RDS-file exists in your ./1_data/ folder
                                                   size = 1000,
@@ -130,5 +130,6 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
