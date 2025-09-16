@@ -35,7 +35,7 @@ library(purephd)
 
 This section walks you through the initial setup required to use the package, including authentication, environment configuration, and loading internal PURE data.
 
-### Import of API-keys via constants.R-file
+### 1. Import of API-keys via constants.R-file
 
 PURE requires authentication via API keys. These keys must have read and write access to the `/research-outputs/` endpoint. Store them in a file called `constants.R` with variables `api_key` and `api_key_staging`. Use `use_pure_credentials()` to load them into your session.
 
@@ -52,7 +52,7 @@ purephd::use_pure_credentials(
   staging_key = api_key_staging)
 ```
 
-### Set system environment
+### 2. Set system environment
 
 You can override default settings using `Sys.setenv()`. This is useful for specifying which PURE server to use (production or staging), and which organization UUID to assign as the awarding institution. The UUID for Aarhus University is provided as an example.
 
@@ -69,7 +69,7 @@ Sys.setenv(
   PURE_AWARDING_ORG_UUID = "fa9d17d6-3d7c-43bf-93f7-a18c40cf0778") 
 ```
 
-### Download or load the tibble of all internal persons from PURE
+### 3. Download or load the tibble of all internal persons from PURE
 
 PURE stores internal persons (e.g., students, supervisors) with unique identifiers (UUIDs). This function downloads or loads a cached list of internal persons, which is used to match individuals from the graduate school data.
 
@@ -81,7 +81,7 @@ internal_persons <- purephd::get_internal_persons(base_url = cfg$base_url,
                                                   size = 1000,
                                                   offset = 0)
 ```
-### Run the workflow
+### 4. Run the workflow
 
 This is the main function of the package. It takes several CSV files as input and performs the following steps:
 
@@ -115,7 +115,7 @@ res <- run_phd_workflow(
 
 It is recommended to first run a "dry run" (`dry_run = TRUE`), in order to be able to inspect its output, and make necessary changes to the raw data, before setting `dry_run = FALSE` to upload it to the PURE server.
 
-### Inspect a random payload
+### 5. Inspect a random payload
 
 
 After running the workflow, you can inspect the generated JSON payloads for both updated and newly created theses. This is useful for validation before uploading to PURE. The JSON structure follows PURE's API schema for research outputs.
@@ -130,3 +130,4 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
