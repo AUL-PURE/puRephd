@@ -97,7 +97,6 @@ This is the main function of the package. It takes several CSV files as input an
 - `gradschool_csv`: must contain columns like `AUID`, `Full name`, `Dissertation title`, `Team name`, `Account`
 - `existing_theses_csv`: must contain `AUID` of PhD students and `UUID` of existing theses
 - `accounts_csv` and `institutes_csv`: must contain mappings for organizational units and book series
-- Folder structure should include `1_data/`, `2_scripts/`, and `3_output/`
 
 ```r
 res <- run_phd_workflow(
@@ -130,6 +129,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
