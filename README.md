@@ -26,8 +26,8 @@ To use the package, you must first install it locally. This assumes you have the
 
 ```r
 # from local folder created by Copilot
-remotes::install_local("purephd")
-library(purephd)
+remotes::install_local("puRephd")
+library(puRephd)
 ```
 
 
@@ -130,4 +130,5 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
