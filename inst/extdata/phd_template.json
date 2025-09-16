@@ -1,0 +1,129 @@
+{
+  "typeDiscriminator": "Thesis",
+  "title": {
+    "value": "THESIS_TITLE"
+  },
+  "type": {
+    "uri": "/dk/atira/pure/researchoutput/researchoutputtypes/thesis/doc",
+    "term": {
+      "en_GB": "PhD thesis",
+      "da_DK": "Ph.d.-afhandling"
+    }
+  },
+  "category": {
+    "uri": "/dk/atira/pure/researchoutput/category/research",
+    "term": {
+      "en_GB": "Research",
+      "da_DK": "Forskning"
+    }
+  },
+  "publicationStatuses": [
+    {
+      "publicationStatus": {
+        "uri": "/dk/atira/pure/researchoutput/status/published",
+        "term": {
+          "en_GB": "Published",
+          "da_DK": "Udgivet"
+        }
+      },
+      "publicationDate": {
+        "year": "AWARD_DATE_YEAR",
+        "month": "AWARD_DATE_MONTH",
+        "day": "AWARD_DATE_DAY"
+      }
+    }
+  ],
+  "language": {
+    "uri": "/dk/atira/pure/core/languages/und",
+    "term": {
+      "en_GB": "Undefined/Unknown",
+      "da_DK": "Udefineret/Ukendt"
+    }
+  },
+  "contributors": [
+    {
+      "typeDiscriminator": "InternalContributorAssociation",
+      "hidden": false,
+      "correspondingAuthor": false,
+      "role": {
+        "uri": "/dk/atira/pure/researchoutput/roles/thesis/author",
+        "term": {
+          "en_GB": "Author",
+          "da_DK": "Forfatter"
+        }
+      },
+      "person": {
+        "systemName": "Person",
+        "uuid": "PERSON_UUID"
+      },
+      "organizations": [
+        {
+          "systemName": "Organization",
+          "uuid": "ORGANIZATION_UUID"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "systemName": "Organization",
+      "uuid": "ORGANIZATION_UUID"
+    }
+  ],
+  "totalNumberOfContributors": 1,
+  "managingOrganization": {
+    "systemName": "Organization",
+    "uuid": "ORGANIZATION_UUID"
+  },
+  "submissionYear": "SUBMISSION_YEAR",
+  "visibility": {
+    "key": "FREE",
+    "description": {
+      "en_GB": "Public - No restriction",
+      "da_DK": "Frit tilgængelig - Ingen begrænsninger"
+    }
+  },
+  "workflow": {
+    "step": "approved",
+    "description": {
+      "en_GB": "Validated",
+      "da_DK": "Valideret"
+    }
+  },
+  "customDefinedFields": {},
+  "qualification": {
+    "uri": "/dk/atira/pure/thesis/qualification/phd",
+    "term": {
+      "en_GB": "PhD",
+      "da_DK": "Ph.d."
+    }
+  },
+  "awardingInstitutions": [
+    {
+      "organizationRef": {
+        "systemName": "Organization",
+        "uuid": "fa9d17d6-3d7c-43bf-93f7-a18c40cf0778"
+      }
+    }
+  ],
+  "supervisors": [],
+  "awardDate": "AWARD_DATE",
+  "bookSeries": [
+    {
+      "journal": {
+        "systemName": "Journal",
+        "uuid": "JOURNAL_UUID"
+      },
+      "no": "RUNNING_NUMBER",
+      "volume": "AWARD_DATE_YEAR"
+    }
+  ],
+  "mainResearchArea": {
+    "uri": "/dk/atira/pure/mainresearcharea/humanities"
+  },
+  "systemName": "ResearchOutput",
+  "abstract": {
+    "en_GB": "",
+    "da_DK": ""
+  }
+}
