@@ -35,7 +35,7 @@ We welcome feedback and contributions to help make future versions more flexible
 
 ## Input file requirements
 
-This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. You can read more about the file requirements here: [dummyData](dummyData/README.md)
+This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. You can read more about the file requirements here: [./dummyData](dummyData/)
 
 
 ## Install (local) & load
@@ -147,6 +147,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
