@@ -1,23 +1,41 @@
 # puRephd
 
-This R package provides tools to automate the creation and updating of PhD thesis records in PURE, based on structured CSV data from the graduate school. It helps match students and supervisors with internal PURE records, enrich metadata, and upload it via the PURE API.
+`puRephd` is an R package that automates the creation and updating of PhD thesis records in PURE, based on structured CSV data from the graduate school. It matches students and supervisors with internal PURE profiles, enriches metadata, and uploads it via the PURE API.
 
-The package is structured in the following way:
 
-puRephd/  
-├─ DESCRIPTION, NAMESPACE, LICENSE, .Rbuildignore, README.md  
-├─ R/  
-│  ├─ README.md                    # overview over all scripts and their containing functions  
-│  ├─ config.R                     # load_config(), use_pure_credentials()  
-│  ├─ io_read.R                    # read_gradschool(), read_existing_theses(), read_mappings()  
-│  ├─ persons.R                    # get_internal_persons(), match_students(), match_supervisors()  
-│  ├─ orgs.R                       # map_organizations_bookseries(), validate_bookseries()  
-│  ├─ text.R                       # escape_xhtml(), split_title_subtitle()  
-│  ├─ payload_build.R              # build_existing_payload(), build_new_payload()  
-│  ├─ pure_api.R                   # pure_get(), pure_put()  
-│  ├─ reports.R                    # write_reports()  
-│  └─ workflow.R                   # run_phd_workflow()  
-└─ inst/extdata/phd_template.json  # your thesis JSON template (package-bundled)  
+## Introduction
+
+Registering PhD theses in PURE has traditionally been a manual and fragmented process, involving repeated data entry, cross-checking multiple sources, and a high risk of human error.
+
+`puRephd` replaces this with an automated workflow. Each month, the graduate school provides a standardized export from PhD Planner containing all completed PhD programmes. The package enables:
+
+- matching students and supervisors with internal PURE profiles,
+- assigning theses to the correct departmental series (e.g., PhD theses - Department of XYZ),
+- identifying existing records in PURE to avoid duplication,
+- generating templates for new or updated thesis entries,
+- uploading data via the PURE API,
+- logging success/failure and producing reports for follow-up.
+
+Additionally, the package allows for the inclusion of metadata not previously available in PURE, such as internal supervisor names and departmental classification of theses.
+
+
+## Disclaimer
+
+The current version _0.1.0_ of `puRephd` is specifically designed for __Aarhus University's__ implementation of PURE. It includes hard-coded identifiers and settings tailored to AU's internal structure.
+
+If you are from another institution and wish to use or adapt the package, please note:
+
+- AU-specific IDs hard-coded in the R scripts will need to be modified,
+- the PURE JSON template for the PhD theses may need to be modified,
+- the structure of the input file may differ from your local setup,
+- PURE API endpoints and authentication may require customization.
+
+We welcome feedback and contributions to help make future versions more flexible and institution-agnostic.
+
+
+## Input file requirements
+
+This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. You can read more about the file requirements here: [dummyData](dummyData/README.md)
 
 
 ## Install (local) & load
@@ -129,6 +147,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
