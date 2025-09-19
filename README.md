@@ -7,9 +7,9 @@
 
 ## Introduction
 
-Registering PhD theses in PURE has traditionally been a manual and fragmented process, involving repeated data entry, cross-checking multiple sources, and a high risk of human error.
+Registering PhD theses in PURE has traditionally been a manual and fragmented process, involving repeated data entry, cross-checking multiple sources, and a high risk of human error. `puRephd` replaces this with an automated workflow. Each month, the graduate school provides a standardized CSV export from PhD Planner containing all completed PhD programmes. The package uses this file to create or enrich research-output entries in PURE. 
 
-`puRephd` replaces this with an automated workflow. Each month, the graduate school provides a standardized export from PhD Planner containing all completed PhD programmes. The package enables:
+The package enables:
 
 - matching students and supervisors with internal PURE profiles,
 - assigning theses to the correct departmental series (e.g., PhD theses - Department of XYZ),
@@ -149,6 +149,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
