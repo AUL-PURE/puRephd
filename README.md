@@ -35,7 +35,7 @@ We welcome feedback and contributions to help make future versions more flexible
 
 ## Input file requirements
 
-This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. You can read more about the file requirements here: [./dummyData](dummyData/).
+This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once - the script distinguishes these by position. You can read more about the file requirements here: [./dummyData](dummyData/).
 
 
 ## Install (local) & load
@@ -114,12 +114,7 @@ This is the main function of the package. It takes several CSV files as input an
 - Optionally uploads the data to PURE via PUT requests
 - Logs results and errors to the specified output folder
 
-**Input CSV file requirements:**
-
-- All files must be UTF-8 encoded
-- `gradschool_csv`: must contain columns like `AUID`, `Full name`, `Dissertation title`, `Team name`, `Account`
-- `existing_theses_csv`: must contain `AUID` of PhD students and `UUID` of existing theses
-- `accounts_csv` and `institutes_csv`: must contain mappings for organizational units and book series
+**For input CSV file requirements see [./dummyData](dummyData/).**
 
 ```r
 res <- run_phd_workflow(
@@ -152,6 +147,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
