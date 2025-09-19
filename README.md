@@ -2,7 +2,7 @@
 **DOI**: [![DOI](https://zenodo.org/badge/{github_id}.svg)](https://zenodo.org/badge/latestdoi/{github_id}) 
 **Maintainer**: [![ORCiD](https://img.shields.io/badge/ORCiD-0000--0001--7349--5401-green.svg)](http://orcid.org/0000-0001-7349-5401) David N. Matzig (<dnma@kb.dk>) 
 
-`puRephd` is an R package that automates the creation and updating of PhD thesis records in PURE, based on structured CSV data from the graduate school. It matches students and supervisors with internal PURE profiles, enriches metadata, and uploads it via the PURE API.
+`puRephd` is an R package that automates the creation and updating of PhD thesis records in PURE, based on structured CSV data. It matches students and supervisors with internal PURE profiles, enriches metadata, and uploads it via the PURE API.
 
 
 ## Introduction
@@ -12,7 +12,7 @@ Registering PhD theses in PURE has traditionally been a manual and fragmented pr
 The package enables:
 
 - matching students and supervisors with internal PURE profiles,
-- assigning theses to the correct departmental series (e.g., PhD theses - Department of XYZ),
+- assigning theses to the correct departmental series (e.g., "PhD theses - Department of XYZ"),
 - identifying existing records in PURE to avoid duplication,
 - generating templates for new or updated thesis entries,
 - uploading data via the PURE API,
@@ -149,6 +149,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
