@@ -35,7 +35,7 @@ We welcome feedback and contributions to help make future versions more flexible
 
 ## Input file requirements
 
-This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. You can read more about the file requirements here: [./dummyData](dummyData/)
+This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file's column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. You can read more about the file requirements here: [./dummyData](dummyData/).
 
 
 ## Install (local) & load
@@ -43,8 +43,13 @@ This script relies on four CSV input files with a header row, comma as delimiter
 To use the package, you must first install it locally. This assumes you have the source folder available. The package is not on CRAN, so installation is done using `remotes::install_local()`, or `remotes::install_github()`.
 
 ```r
-# from local folder created by Copilot
-remotes::install_local("puRephd")
+# Option a) install from github
+remotes::install_github("https://github.com/AUL-PURE/puRephd", dependencies = TRUE)
+
+# Option b) install from local folder
+remotes::install_local("puRephd", dependencies = TRUE)
+
+# Load package
 library(puRephd)
 ```
 
@@ -58,15 +63,15 @@ This section walks you through the initial setup required to use the package, in
 PURE requires authentication via API keys. These keys must have read and write access to the `/research-outputs/` endpoint. Store them in a file called `constants.R` with variables `api_key` and `api_key_staging`. Use `use_pure_credentials()` to load them into your session.
 
 ```r
-# import personal api-keys
+# Import personal api-keys
 source("path/to/constants.R") # load api_key, api_key_staging
 
 # API-keys are loaded automatically from constants.R
-# no need to modify manually
+# No need to modify manually
 puRephd::use_pure_credentials(
-  # Your production API-key with read&write authorization for /research-outputs/
+  # Your production API-key with read&write authorization for PURE's /research-outputs/
   prod_key = api_key, 
-  # Your staging API-key with read&write authorization for /research-outputs/
+  # Your staging API-key with read&write authorization for PURE's /research-outputs/
   staging_key = api_key_staging)
 ```
 
@@ -147,6 +152,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
