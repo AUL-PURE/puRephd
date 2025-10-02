@@ -271,6 +271,7 @@ run_phd_workflow <- function(
       "%d theses have missing book series mapping",
       nrow(missing_bs)
     ))
+    readr::write_csv(missing_bs, file.path(out_dir, "missing_bookseries.csv"))
   }
   
   # ---- Step 9: determine existing vs new ------------------------------------
@@ -563,3 +564,4 @@ run_phd_workflow <- function(
     failed_get          = failed_get
   )
 }
+
