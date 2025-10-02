@@ -44,15 +44,16 @@ This script relies on four CSV input files with a header row, comma as delimiter
 
 To use the package, you must first install it locally. This assumes you have the source folder available. The package is not on CRAN, so installation is done using `remotes::install_local()`, or `remotes::install_github()`.
 
-```r
-# Option a) install from github
-remotes::install_github("https://github.com/AUL-PURE/puRephd", dependencies = TRUE)
-
-# Option b) install from local folder
-remotes::install_local("puRephd", dependencies = TRUE)
-
-# Load package
+```{r}
+if (!require("puRephd")) {
+  # install from github
+  remotes::install_github("https://github.com/AUL-PURE/puRephd", dependencies = TRUE)
+  # Load package
+  library(puRephd)
+} else {
+  # Load package
 library(puRephd)
+}
 ```
 
 
@@ -64,7 +65,7 @@ This section walks you through the initial setup required to use the package, in
 
 PURE requires authentication via API keys. These keys must have read and write access to the `/research-outputs/` endpoint. Store them in a file called `constants.R` with variables `api_key` and `api_key_staging`. Use `use_pure_credentials()` to load them into your session.
 
-```r
+```{r}
 # Import personal api-keys
 source("path/to/constants.R") # load api_key, api_key_staging
 
@@ -81,7 +82,7 @@ puRephd::use_pure_credentials(
 
 You can override default settings using `Sys.setenv()`. This is useful for specifying which PURE server to use (production or staging), and which organization UUID to assign as the awarding institution. The UUID for Aarhus University is provided as an example.
 
-```r
+```{r}
 # Optional: override defaults
 Sys.setenv(
   # URL of AU-PURE production server
@@ -98,7 +99,7 @@ Sys.setenv(
 
 PURE stores internal persons (e.g., students, supervisors) with unique identifiers (UUIDs). This function downloads or loads a cached list of internal persons, which is used to match individuals from the graduate school data.
 
-```r
+```{r}
 # Internal persons
 internal_persons <- puRephd::get_internal_persons(base_url = cfg$base_url, 
                                                   headers = cfg$headers, 
@@ -118,7 +119,7 @@ This is the main function of the package. It takes several CSV files as input an
 
 **For input CSV file requirements see [./dummyData](dummyData/).**
 
-```r
+```{r}
 res <- run_phd_workflow(
   gradschool_csv      = "path/to/theses_to_be_created.csv", # File-path to the .csv file (UTF-8 encoded) provided by the graduate school with all newly awarded PhD titles.
   existing_theses_csv = "path/to/existing_theses_in_PURE.csv", # File-path to the .csv file from a PURE-report listing all existing PhD theses in PURE together with their UUIDs.
@@ -129,7 +130,8 @@ res <- run_phd_workflow(
   staging             = TRUE,
   internal_persons = internal_persons,
   verbose = TRUE,        # show progress
-  abort_on_error = FALSE  # stop on first error)
+  abort_on_error = FALSE  # stop on first error
+)
 ```
 
 It is recommended to first run a "dry run" (`dry_run = TRUE`), in order to be able to inspect its output, and make necessary changes to the raw data, before setting `dry_run = FALSE` to upload it to the PURE server.
@@ -139,7 +141,7 @@ It is recommended to first run a "dry run" (`dry_run = TRUE`), in order to be ab
 
 After running the workflow, you can inspect the generated JSON payloads for both updated and newly created theses. This is useful for validation before uploading to PURE. The JSON structure follows PURE's API schema for research outputs.
 
-```r
+```{r}
 # Updated, existing theses
 rand_existing_id <- sample(names(res$json_existing), 1)
 jsonlite::toJSON(res$json_existing[[rand_existing_id]], auto_unbox = TRUE, pretty = TRUE)
@@ -149,6 +151,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
