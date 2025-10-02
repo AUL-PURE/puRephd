@@ -360,7 +360,7 @@ run_phd_workflow <- function(
     out <- list()
     if (nrow(theses_not_in_pure) > 0) {
       template_raw <- jsonlite::fromJSON(
-        system.file("extdata", "phd_template.json", package = "purephd"),
+        system.file("extdata", "phd_template.json", package = "puRephd"),
         simplifyVector = FALSE
       )
       for (auid in unique(theses_not_in_pure$AUID)) {
@@ -564,4 +564,5 @@ run_phd_workflow <- function(
     failed_get          = failed_get
   )
 }
+
 
