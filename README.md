@@ -126,7 +126,7 @@ res <- run_phd_workflow(
   accounts_csv        = "path/to/internal_organizations_and_their_parents.csv", # Path to CSV-file linking internal organizations and their parent organizations.
   institutes_csv      = "path/to/institute_thesaurus.csv", # Path to thesaurus file linking internal organizations with organization names as provided by the graduate school.
   out_dir             = "path/to/output_directory", # Path to the folder, where the logging-files, etc. of this project should be stored. Will be created, if non-existing.
-  dry_run             = TRUE, # Ff TRUE, run script without `PUT`-ting theses to PURE.
+  dry_run             = TRUE, # If TRUE, run script without `PUT`-ting theses to PURE.
   staging             = TRUE,
   internal_persons = internal_persons,
   verbose = TRUE,        # show progress
@@ -151,6 +151,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
