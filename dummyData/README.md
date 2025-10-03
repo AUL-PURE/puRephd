@@ -1,6 +1,6 @@
 # Requirements
 
-This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file’s column names and order must be exact, including cases where the same header name appears more than once—the script distinguishes these by position. 1
+This script relies on four CSV input files with a header row, comma as delimiter, and UTF‑8 encoding. Date fields (if any) use DD/MM/YYYY (e.g., 31/12/2025). Each file’s column names and order must be exact, including cases where the same header name appears more than once - the script distinguishes these by position. 1
 
 ## 1 `theses_to_be_created.csv` - source list of PhD theses to register
 
@@ -29,3 +29,4 @@ PhD book-series have to exist in PURE.
 ## 4 `internal_organizations_and_their_parents.csv` - org to parent mapping
 
 Minimal mapping used to resolve local organizational hierarchy for accounts and affiliations. Required columns (exact order): `Company name`, `Parent`.
+
