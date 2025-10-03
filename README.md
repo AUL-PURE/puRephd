@@ -92,7 +92,7 @@ Sys.setenv(
   PURE_BASE_URL_STAGING = "au-staging.elsevierpure.com", 
   
   # UUID of the University awarding the PhD degree (here: Aarhus University, AU)
-  PURE_AWARDING_ORG_UUID = "fa9d17d6-3d7c-43bf-93f7-a18c40cf0778") 
+  PURE_AWARDING_ORG_UUID = "fa9d17d6-3d7c-43bf-93f7-a18c40cf0778")
 ```
 
 ### 3. Download or load the tibble of all internal persons from PURE
@@ -100,6 +100,9 @@ Sys.setenv(
 PURE stores internal persons (e.g., students, supervisors) with unique identifiers (UUIDs). This function downloads or loads a cached list of internal persons, which is used to match individuals from the graduate school data.
 
 ```{r}
+# Set config to staging (TRUE) or production (FALSE)
+cfg <- load_config(staging = FALSE)
+
 # Internal persons
 internal_persons <- puRephd::get_internal_persons(base_url = cfg$base_url, 
                                                   headers = cfg$headers, 
@@ -151,6 +154,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
