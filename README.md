@@ -101,7 +101,7 @@ PURE stores internal persons (e.g., students, supervisors) with unique identifie
 
 ```{r}
 # Set config to staging (TRUE) or production (FALSE)
-cfg <- load_config(staging = FALSE)
+cfg <- puRephd::load_config(staging = FALSE)
 
 # Internal persons
 internal_persons <- puRephd::get_internal_persons(base_url = cfg$base_url, 
@@ -154,6 +154,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
