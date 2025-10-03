@@ -23,7 +23,7 @@ Additionally, the package allows for the inclusion of metadata not previously av
 
 ## Disclaimer
 
-The current version _0.1.0_ of `puRephd` is specifically designed for __Aarhus University's__ implementation of PURE. It includes hard-coded identifiers and settings tailored to AU's internal structure.
+The current version _0.1.X_ of `puRephd` is specifically designed for __Aarhus University's__ implementation of PURE. It includes hard-coded identifiers and settings tailored to AU's internal structure.
 
 If you are from another institution and wish to use or adapt the package, please note:
 
@@ -151,6 +151,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
