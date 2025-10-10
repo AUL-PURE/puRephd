@@ -46,7 +46,11 @@ To use the package, you must first install it locally. This assumes you have the
 
 ```{r}
 if (!require("puRephd")) {
-  # install from github
+  # check if `remotes` is installed
+  if (!requireNamespace("remotes", quietly = TRUE)) {
+    install.packages("remotes")
+  }
+  # install `puRephd` from github
   remotes::install_github("https://github.com/AUL-PURE/puRephd", dependencies = TRUE)
   # Load package
   library(puRephd)
@@ -154,6 +158,7 @@ rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
 
 ```
+
 
 
 
