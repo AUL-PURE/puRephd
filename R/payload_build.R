@@ -22,7 +22,7 @@ build_existing_payload <- function(template, student, supervisors, award_org_uui
     template$title$value <- s$title
     template$subTitle$value <- s$subtitle
   } else {
-    template$subTitle$value <- ""
+    # template$subTitle$value <- "" # this is problematic, if you run the script for the same data more than once!
   }
 
   # Publication status: set to published at award date
@@ -137,3 +137,4 @@ build_new_payload <- function(template, student, supervisors, staging = FALSE) {
   }
   template
 }
+
