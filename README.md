@@ -67,7 +67,7 @@ This section walks you through the initial setup required to use the package, in
 
 ### 1. Import of API-keys via constants.R-file
 
-PURE requires authentication via API keys. These keys must have read and write access to the `/research-outputs/` endpoint. Store them in a file called `constants.R` with variables `api_key` and `api_key_staging`. Use `use_pure_credentials()` to load them into your session.
+PURE requires authentication via API keys. These keys must have read access to the `/persons/` endpoint, and read and write access to the `/research-outputs/` endpoint. Store the keys in a file called `constants.R` with variables `api_key` and `api_key_staging`. Use `use_pure_credentials()` to load them into your session.
 
 ```{r}
 # Import personal api-keys
@@ -145,7 +145,6 @@ It is recommended to first run a "dry run" (`dry_run = TRUE`), in order to be ab
 
 ### 5. Inspect a random payload
 
-
 After running the workflow, you can inspect the generated JSON payloads for both updated and newly created theses. This is useful for validation before uploading to PURE. The JSON structure follows PURE's API schema for research outputs.
 
 ```{r}
@@ -156,8 +155,8 @@ jsonlite::toJSON(res$json_existing[[rand_existing_id]], auto_unbox = TRUE, prett
 # Newly created theses
 rand_new_auid <- sample(names(res$json_new), 1)
 jsonlite::toJSON(res$json_new[[rand_new_auid]], auto_unbox = TRUE, pretty = TRUE)
-
 ```
+
 
 
 
