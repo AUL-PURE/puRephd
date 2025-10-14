@@ -66,7 +66,7 @@ This document provides an overview of the R scripts included in the `puRephd` pa
 
 - `match_students()`:  Match PhD students against internal persons.
 
-- `match_supervisors()`: Match internal supervisors against internal persons (drop external supervisors).
+- `match_supervisors()`: Match internal supervisors against internal persons (drop external supervisors). ATTENTION! Filters hard-coded e-mail domains that contain ".au" and ".rm". Needs to be changed in the script for your own organisation.
 
 ---
 
@@ -98,6 +98,7 @@ This document provides an overview of the R scripts included in the `puRephd` pa
 - `write_reports()`: Write standard reports.
 
 ---
+
 
 
 
