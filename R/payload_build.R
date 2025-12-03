@@ -75,7 +75,7 @@ build_existing_payload <- function(template, student, supervisors, award_org_uui
     for (i in seq_len(nrow(supervisors))) {
       role <- if (identical(supervisors$role[i], "Main supervisor"))
         list(uri = "/dk/atira/pure/researchoutput/roles/internalexternal/thesis/supervisor", term = list(en_GB = "Supervisor", da_DK = "Vejleder"))
-      else
+      else if (identical(supervisors$role[i], "Co-supervisor"))
         list(uri = "/dk/atira/pure/researchoutput/roles/internalexternal/thesis/co_supervisor", term = list(en_GB = "Co-supervisor", da_DK = "Medvejleder"))
       sup_list[[i]] <- list(person = list(systemName = "Person", uuid = supervisors$uuid[i]), role = role)
     }
@@ -129,7 +129,7 @@ build_new_payload <- function(template, student, supervisors, staging = FALSE) {
     for (i in seq_len(nrow(supervisors))) {
       role <- if (identical(supervisors$role[i], "Main supervisor"))
         list(uri = "/dk/atira/pure/researchoutput/roles/internalexternal/thesis/supervisor", term = list(en_GB = "Supervisor", da_DK = "Vejleder"))
-      else
+      else if (identical(supervisors$role[i], "Co-supervisor"))
         list(uri = "/dk/atira/pure/researchoutput/roles/internalexternal/thesis/co_supervisor", term = list(en_GB = "Co-supervisor", da_DK = "Medvejleder"))
       sup_list[[i]] <- list(person = list(systemName = "Person", uuid = supervisors$uuid[i]), role = role)
     }
@@ -137,4 +137,5 @@ build_new_payload <- function(template, student, supervisors, staging = FALSE) {
   }
   template
 }
+
 
